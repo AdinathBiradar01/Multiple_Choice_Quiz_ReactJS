@@ -2,122 +2,153 @@ import React, { useState } from "react";
 import "./App.css";
 
 function App() {
-  // Properties
+  const [showStart, setShowStart] = useState(true);
   const [showResults, setShowResults] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
 
   const questions = [
     {
-      text: "What is the capital of America?",
+      text: "In which company are you doing your internship?",
       options: [
-        { id: 0, text: "New York City", isCorrect: false },
-        { id: 1, text: "Boston", isCorrect: false },
-        { id: 2, text: "Santa Fe", isCorrect: false },
-        { id: 3, text: "Washington DC", isCorrect: true },
+        { id: 0, text: "Numetry", isCorrect: true },
+        { id: 1, text: "TechCorp", isCorrect: false },
+        { id: 2, text: "InnoSoft", isCorrect: false },
+        { id: 3, text: "CodeWorks", isCorrect: false },
       ],
     },
     {
-      text: "What year was the Constitution of America written?",
+      text: "What does CPU stand for?",
       options: [
-        { id: 0, text: "1787", isCorrect: true },
-        { id: 1, text: "1776", isCorrect: false },
-        { id: 2, text: "1774", isCorrect: false },
-        { id: 3, text: "1826", isCorrect: false },
+        { id: 0, text: "Central Processing Unit", isCorrect: true },
+        { id: 1, text: "Computer Personal Unit", isCorrect: false },
+        { id: 2, text: "Central Personal Unit", isCorrect: false },
+        { id: 3, text: "Central Process Unit", isCorrect: false },
       ],
     },
     {
-      text: "Who was the second president of the US?",
+      text: "What is the brain of the computer?",
       options: [
-        { id: 0, text: "John Adams", isCorrect: true },
-        { id: 1, text: "Paul Revere", isCorrect: false },
-        { id: 2, text: "Thomas Jefferson", isCorrect: false },
-        { id: 3, text: "Benjamin Franklin", isCorrect: false },
+        { id: 0, text: "RAM", isCorrect: false },
+        { id: 1, text: "CPU", isCorrect: true },
+        { id: 2, text: "Hard Drive", isCorrect: false },
+        { id: 3, text: "Motherboard", isCorrect: false },
       ],
     },
     {
-      text: "What is the largest state in the US?",
+      text: "Which programming language is primarily used for web development?",
       options: [
-        { id: 0, text: "California", isCorrect: false },
-        { id: 1, text: "Alaska", isCorrect: true },
-        { id: 2, text: "Texas", isCorrect: false },
-        { id: 3, text: "Montana", isCorrect: false },
+        { id: 0, text: "Python", isCorrect: false },
+        { id: 1, text: "Java", isCorrect: false },
+        { id: 2, text: "JavaScript", isCorrect: true },
+        { id: 3, text: "C++", isCorrect: false },
       ],
     },
     {
-      text: "Which of the following countries DO NOT border the US?",
+      text: "What does RAM stand for?",
       options: [
-        { id: 0, text: "Canada", isCorrect: false },
-        { id: 1, text: "Russia", isCorrect: true },
-        { id: 2, text: "Cuba", isCorrect: true },
-        { id: 3, text: "Mexico", isCorrect: false },
+        { id: 0, text: "Random Access Memory", isCorrect: true },
+        { id: 1, text: "Read Access Memory", isCorrect: false },
+        { id: 2, text: "Run Access Memory", isCorrect: false },
+        { id: 3, text: "Remote Access Memory", isCorrect: false },
       ],
     },
+    {
+      text: "Which device is used to store permanent data?",
+      options: [
+        { id: 0, text: "RAM", isCorrect: false },
+        { id: 1, text: "Hard Drive", isCorrect: true },
+        { id: 2, text: "Cache Memory", isCorrect: false },
+        { id: 3, text: "Processor", isCorrect: false },
+      ],
+    },
+    {
+      text: "What is an operating system?",
+      options: [
+        { id: 0, text: "A software that manages hardware", isCorrect: true },
+        { id: 1, text: "A type of computer", isCorrect: false },
+        { id: 2, text: "A programming language", isCorrect: false },
+        { id: 3, text: "A web browser", isCorrect: false },
+      ],
+    },
+    {
+      text: "Which protocol is used to send emails?",
+      options: [
+        { id: 0, text: "HTTP", isCorrect: false },
+        { id: 1, text: "FTP", isCorrect: false },
+        { id: 2, text: "SMTP", isCorrect: true },
+        { id: 3, text: "IMAP", isCorrect: false },
+      ],
+    },
+    {
+      text: "What does HTTP stand for?",
+      options: [
+        { id: 0, text: "HyperText Transfer Protocol", isCorrect: true },
+        { id: 1, text: "Hyperlink Transfer Protocol", isCorrect: false },
+        { id: 2, text: "HighText Transfer Protocol", isCorrect: false },
+        { id: 3, text: "HyperText Transmission Protocol", isCorrect: false },
+      ],
+    },
+    {
+      text: "What is the purpose of a firewall in a computer network?",
+      options: [
+        { id: 0, text: "To block unauthorized access", isCorrect: true },
+        { id: 1, text: "To store data permanently", isCorrect: false },
+        { id: 2, text: "To speed up the network", isCorrect: false },
+        { id: 3, text: "To provide Wi-Fi connection", isCorrect: false },
+      ],
+    }
   ];
 
-  // Helper Functions
+  const startQuiz = () => {
+    setShowStart(false);
+  };
 
-  /* A possible answer was clicked */
   const optionClicked = (isCorrect) => {
-    // Increment the score
     if (isCorrect) {
       setScore(score + 1);
     }
-
-    if (currentQuestion + 1 < questions.length) {
-      setCurrentQuestion(currentQuestion + 1);
-    } else {
+    setCurrentQuestion(currentQuestion + 1);
+    if (currentQuestion + 1 === questions.length) {
       setShowResults(true);
     }
   };
 
-  /* Resets the game back to default */
   const restartGame = () => {
     setScore(0);
     setCurrentQuestion(0);
     setShowResults(false);
+    setShowStart(true);
   };
 
   return (
     <div className="App">
-      {/* 1. Header  */}
-      <h1>USA Quiz 🇺🇸</h1>
-
-      {/* 2. Current Score  */}
-      <h2>Score: {score}</h2>
-
-      {/* 3. Show results or show the question game  */}
-      {showResults ? (
-        /* 4. Final Results */
+      {showStart ? (
+        <div className="start-screen">
+          <h1>Welcome to the Computer Technology Quiz 💻</h1>
+          <button onClick={startQuiz}>Start Quiz</button>
+        </div>
+      ) : showResults ? (
         <div className="final-results">
           <h1>Final Results</h1>
           <h2>
             {score} out of {questions.length} correct - (
-            {(score / questions.length) * 100}%)
+            {((score / questions.length) * 100).toFixed(2)}%)
           </h2>
-          <button onClick={() => restartGame()}>Restart game</button>
+          <button onClick={restartGame}>Restart Game</button>
         </div>
       ) : (
-        /* 5. Question Card  */
         <div className="question-card">
-          {/* Current Question  */}
           <h2>
             Question: {currentQuestion + 1} out of {questions.length}
           </h2>
           <h3 className="question-text">{questions[currentQuestion].text}</h3>
-
-          {/* List of possible answers  */}
           <ul>
-            {questions[currentQuestion].options.map((option) => {
-              return (
-                <li
-                  key={option.id}
-                  onClick={() => optionClicked(option.isCorrect)}
-                >
-                  {option.text}
-                </li>
-              );
-            })}
+            {questions[currentQuestion].options.map((option) => (
+              <li key={option.id} onClick={() => optionClicked(option.isCorrect)}>
+                {option.text}
+              </li>
+            ))}
           </ul>
         </div>
       )}

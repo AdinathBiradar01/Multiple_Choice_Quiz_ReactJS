@@ -3,21 +3,27 @@
 }
 
 .question-card {
-  /* Center the div  */
+  /* Center the div */
   margin: 0 auto;
 
-  /* Dimensions  */
-  width: 80%; /* Can be in percentage also. */
+  /* Dimensions */
+  width: 80%;
   height: auto;
 
-  /* Visual  */
-  background-color: gray;
-  padding: 16px;
-  border-radius: 16px;
-  color: white;
+  /* Background */
+  background-image: url('C:\Users\birad\OneDrive\Desktop\A WebPortfolio\Multiple_Choice_Quiz_ReactJS\public\gettyimage.jpg'); /* Replace with your image URL */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* Visual */
+  padding: 120px;
+  border-radius: 120px;
+  color: rgb(218, 46, 16);
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
     rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
 }
+
 
 ul {
   list-style: none;
@@ -25,7 +31,7 @@ ul {
 
 li {
   margin-top: 8px;
-  background-color: darkgray;
+  background-color: rgb(214, 216, 83);
   padding: 16px;
   border: 3px solid white;
   border-radius: 20px;
@@ -33,7 +39,7 @@ li {
 }
 
 .question-text {
-  color: darkblue;
+  color: rgb(8, 241, 28);
   font-size: 24px;
 }
 
@@ -49,23 +55,23 @@ li {
   margin-top: 64px;
 
   /* Visual  */
-  background-color: gray;
-  padding: 16px;
-  border-radius: 16px;
+  background-color: rgb(17, 223, 82);
+  padding: 160px;
+  border-radius: 160px;
   color: white;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
     rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
 }
 
 button {
-  background-color: red; /* Green */
+  background-color: rgb(241, 10, 10); /* Green */
   border: none;
-  color: white;
-  padding: 16px 24px;
+  color: rgb(27, 206, 219);
+  padding: 35px 55px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 25px;
   font-weight: bold;
 
   border-radius: 24px;
